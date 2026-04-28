@@ -4,11 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
   addToCartButtons.forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+
       const productCard = button.closest(".product-card");
 
       const productName = productCard.querySelector("h4").textContent;
-      const productPrice = productCard.querySelector(".price").textContent;
+      const productPrice =
+        productCard.querySelector(".price")?.textContent || "$0";
       const productImage = productCard.querySelector("img").src;
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -29,6 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("cart", JSON.stringify(cart));
 
       alert(productName + " added to cart!");
+
+      // 🔥 Update cart counter instantly
+      let count = cart.reduce((total, item) => total + item.quantity, 0);
+      const cartCount = document.getElementById("cart-count");
+      if (cartCount) cartCount.textContent = count;
     });
   });
 });

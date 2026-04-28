@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Huluገበያ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <h2>Checkout</h2>
+  </nav>
+
+  <section class="checkout-page">
+    <div class="checkout-container">
+
+      <!-- 🧍 Customer Info -->
+      <div class="checkout-form">
+        <h3>Billing Details</h3>
+
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <input type="text" id="city" placeholder="City" required>
+
+        <h3>Payment Method</h3>
+
+        <select id="payment">
+          <option value="cash">Cash on Delivery</option>
+          <option value="telebirr">Telebirr</option>
+        </select>
+
+        <button id="place-order" class="btn">Place Order</button>
+      </div>
+
+      <div id="telebirr-box" style="display:none;">
+  <h4>Pay with Telebirr</h4>
+  <p>Send payment to: <strong>+251912345678</strong></p>
+  <input type="text" id="tx-id" placeholder="Enter Transaction ID">
+</div>
+
+      <!-- 🛒 Order Summary -->
+      <div class="checkout-summary">
+        <h3>Your Order</h3>
+        <div class="checkout-items"></div>
+        <h4 id="checkout-total">Total: $0</h4>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

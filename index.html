@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huluገበያ</title>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,9 +15,9 @@
 
   <header>
     <nav class="navbar">
-      <img class="logo" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt="">
+      <img class="logo" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt="" data-aos="fade-down">
 
-      <ul class="nav-links">
+      <ul class="nav-links" data-aos="fade-down">
         <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li class="dropdown">
@@ -33,9 +34,10 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
 
-      <div class="nav-icons">
+      <div class="nav-icons" data-aos="fade-down">
         <span id="search-icon">🔍</span>
-        <a href="cart.html"><span>🛒</span></a>
+        <a href="cart.html" style="text-decoration: none;"><span class="cart-icon">🛒</span>
+        <span id="cart-count">0</span></a>
       </div>
 
       <div class="search-box" id="search-box">
@@ -44,23 +46,23 @@
     </nav>
 
     <section class="hero">
-      <div class="hero-text">
+      <div class="hero-text" data-aos="fade-right">
         <h1>ከ <span><img style="width: 50%;
                                 margin-bottom: -55px;" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt=""></span> ጥሩ ምርቶችን ያግኙ።</h1>
         <p>Find the best fashion, electronics, shoes, and accessories all in one place.</p>
         <a href="#products" class="btn">Shop Now</a>
       </div>
 
-      <div class="hero-image">
+      <div class="hero-image" data-aos="fade-left">
         <img src="img/Mensfitt summer wear, mens summer clothing, Indian summer wear, men's fashion, summer fashion, hot weather wear, mens shirts, shorts, trousers, summer accessories, mens style, summer style, outfit ideas, fashion ins.jpg" alt="Hero Product">
       </div>
     </section>
   </header>
 
   <section class="categories">
-    <h2>Shop by Category</h2>
+    <h2 class="autoShow">Shop by Category</h2>
 
-    <div class="category-grid">
+    <div class="category-grid" data-aos="fade-up">
       <div class="category-card">ፋሽን</div>
       <div class="category-card">ጫማዎች</div>
       <div class="category-card">ሰዓቶች</div>
@@ -68,36 +70,40 @@
     </div>
   </section>
 
-  <section class="products" id="products">
-    <h2>ተለይተው የቀረቡ ምርቶች</h2>
+  <section class="products" id="products" data-aos="fade-up">
+    <h2 class="autoShow">ተለይተው የቀረቡ ምርቶች</h2>
 
-    <div class="product-grid">
+    <div class="product-grid imageReveal">
       <div class="product-card">
         <img src="img/Training Shoes for Daily Workouts.jpg" alt="Shoes">
         <h3>የሩጫ ጫማዎች</h3>
-        <p>$89.99</p>
-        <button>Add to Cart</button>
+        <p class="price">$89.99</p>
+        <span class="wishlist">❤️</span>
+        <button class="btn add-to-cart">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="img/download (1).jpg" alt="Phone">
         <h3>ስማርት ስልክ</h3>
-        <p>$499.99</p>
-        <button>Add to Cart</button>
+        <p class="price">$499.99</p>
+        <span class="wishlist">❤️</span>
+        <button class="btn add-to-cart">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="img/download.jpg" alt="Camera">
         <h3>ዲጂታል ካሜራ</h3>
-        <p>$299.99</p>
-        <button>Add to Cart</button>
+        <p class="price">$300</p>
+        <span class="wishlist">❤️</span>
+        <button class="btn add-to-cart">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="img/Aidase  Vintage Short Sleeve Tees for Men 2022 Summer New  Hip Hop POLO Collar American Letter Baggy WOMAN T-SHIRT Student BF Button Preppy Streetwear Tops - Green _ M _ China.jpg" alt="T-shirt">
         <h3>ቲሸርት</h3>
-        <p>$29.99</p>
-        <button>Add to Cart</button>
+        <p class="price">$29.90</p>
+        <span class="wishlist">❤️</span>
+        <button class="btn add-to-cart">Add to Cart</button>
       </div>
     </div>
   </section>
@@ -122,8 +128,16 @@
       </div>
     </div>
   </footer>
-<script src="shop.js"></script>
 <script src="main.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+ AOS.init({
+  duration: 800,
+  once: false,
+  easing: "ease-in-out",
+  mirror: true // 
+});
+</script>
 </body>
 </html>
 

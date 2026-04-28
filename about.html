@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Huluገበያ</title>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
 </head>
 <body>
   <nav class="navbar">
-    <img class="logo" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt="">
+     <img class="logo" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt="">
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li class="dropdown">
@@ -31,7 +32,7 @@
     </ul>
     <div class="nav-icons">
         <span id="search-icon">🔍</span>
-        <a href="cart.html"><span>🛒</span></a>
+        <a href="cart.html" style="text-decoration: none;"><span>🛒</span></a>
       </div>
 
       <div class="search-box" id="search-box">
@@ -41,7 +42,7 @@
 
   <section class="about-page">
     <div class="about-container">
-      <h2>About <span><img style= "width: 130px;
+      <h2 data-aos="zoom-in">About <span><img style= "width: 130px;
                                    margin-bottom: -27px;
                                    margin-left: -15px;" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt=""></span></h2>
       <p>Welcome to Huluገበያ, your number one source for all things fashion, electronics, shoes, watches, and accessories. We’re dedicated to giving you the very best products with a focus on quality, customer service, and uniqueness.</p>
@@ -60,5 +61,13 @@
                                      margin-bottom: -22px;
                                      margin-left: -10px;" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt=""></span>. All rights reserved.</p>
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+   AOS.init({
+  duration: 1000, // animation speed
+  once: true // animate only once
+});
+</script>
 </body>
 </html>
