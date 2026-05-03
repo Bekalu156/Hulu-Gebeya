@@ -12,7 +12,7 @@
 </head>
 <body>
   <nav class="navbar">
-    <img class="logo" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt="">
+    <a href="index.html"><img class="logo" src="img/186b616da8f344a9ba737d38646078bf-removebg-preview.png" alt=""></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="shop.html">Shop</a></li>
@@ -113,8 +113,10 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
    AOS.init({
-  duration: 1000, // animation speed
-  once: false //
+  duration: 800,
+  once: false,
+  easing: "ease-in-out",
+  mirror: true // whether elements should animate out while scrolling past them
 });
 </script>
 </body>

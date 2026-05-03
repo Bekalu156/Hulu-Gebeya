@@ -3,53 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Huluገበያ</title>
+  <title>Checkout</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
 
-  <nav class="navbar">
-    <h2>Checkout</h2>
-  </nav>
+<nav class="navbar">
+  <h2>Checkout</h2>
+</nav>
 
-  <section class="checkout-page">
-    <div class="checkout-container">
+<section class="checkout-page">
+  <div class="checkout-container">
 
-      <!-- 🧍 Customer Info -->
-      <div class="checkout-form">
-        <h3>Billing Details</h3>
+    <!-- FORM -->
+    <div class="checkout-form">
+      <h3>Billing Details</h3>
 
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="text" id="phone" placeholder="Phone Number" required>
-        <input type="text" id="address" placeholder="Address" required>
-        <input type="text" id="city" placeholder="City" required>
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="text" id="phone" placeholder="Phone Number">
+      <input type="text" id="address" placeholder="Address">
+      <input type="text" id="city" placeholder="City">
 
-        <h3>Payment Method</h3>
+      <h3>Payment Method</h3>
 
-        <select id="payment">
-          <option value="cash">Cash on Delivery</option>
-          <option value="telebirr">Telebirr</option>
-        </select>
+      <select id="payment">
+        <option value="cash">Cash on Delivery</option>
+        <option value="telebirr">Telebirr</option>
+      </select>
 
-        <button id="place-order" class="btn">Place Order</button>
+      <!-- TELEBIRR -->
+      <div id="telebirr-box" style="display:none;">
+        <p>Send to: <strong>+2519XXXXXXXX</strong></p>
+        <input type="text" id="tx-id" placeholder="Transaction ID">
       </div>
 
-      <div id="telebirr-box" style="display:none;">
-  <h4>Pay with Telebirr</h4>
-  <p>Send payment to: <strong>+251912345678</strong></p>
-  <input type="text" id="tx-id" placeholder="Enter Transaction ID">
+      <button id="place-order">Place Order</button>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="checkout-summary">
+      <h3>Your Order</h3>
+      <div class="checkout-items"></div>
+      <h4 id="checkout-total">Total: $0</h4>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECEIPT (IMAGE SOURCE) -->
+<div id="receipt" style="
+  width:320px;
+  padding:15px;
+  background:#fff;
+  font-family:Arial;
+  border-radius:10px;
+  display:none;
+">
+  <h3 style="text-align:center;">🛒 Order Receipt</h3>
+
+  <p id="r-name"></p>
+  <p id="r-phone"></p>
+  <p id="r-address"></p>
+  <p id="r-payment"></p>
+  <p id="r-tx"></p>
+
+  <div id="r-items"></div>
+
+  <h4 id="r-total"></h4>
 </div>
 
-      <!-- 🛒 Order Summary -->
-      <div class="checkout-summary">
-        <h3>Your Order</h3>
-        <div class="checkout-items"></div>
-        <h4 id="checkout-total">Total: $0</h4>
-      </div>
-
-    </div>
-  </section>
-
-  <script src="checkout.js"></script>
+<script src="checkout.js"></script>
 </body>
 </html>
