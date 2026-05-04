@@ -1,8 +1,8 @@
-// main.js
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 🔍 Toggle Search Box
+  // =========================
+  // 🔍 SEARCH TOGGLE
+  // =========================
   const searchIcon = document.getElementById("search-icon");
   const searchBox = document.getElementById("search-box");
 
@@ -13,37 +13,116 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🔎 Live Search (Shop Page)
+  // =========================
+  // 🔎 LIVE SEARCH (FILTER PRODUCTS)
+  // =========================
   const searchInput = document.getElementById("search-input");
+  const products = document.querySelectorAll(".product-card");
 
-  if (searchInput) {
+  if (searchInput && products.length > 0) {
     searchInput.addEventListener("keyup", () => {
       const value = searchInput.value.toLowerCase();
-      const products = document.querySelectorAll(".product-card");
 
       products.forEach(product => {
-        const name = product.querySelector("h4").textContent.toLowerCase();
-        product.style.display = name.includes(value) ? "block" : "none";
+        const title = product.querySelector("h4");
+        if (!title) return;
+
+        const name = title.innerText.toLowerCase();
+
+        product.style.display =
+          name.includes(value) ? "block" : "none";
       });
     });
   }
 
-  // 🛒 Cart Counter
-  function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let count = cart.reduce((total, item) => total + item.quantity, 0);
+  // =========================
+  // 🛒 ADD TO CART (GLOBAL)
+  // =========================
+  const addToCartBtns = document.querySelectorAll(".add-to-cart");
 
-    const cartCount = document.getElementById("cart-count");
-    if (cartCount) cartCount.textContent = count;
+  addToCartBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+      const card = btn.closest(".product-card");
+
+      const name = card.querySelector("h4").innerText;
+      const price = card.querySelector("p").innerText;
+      const image = card.querySelector("img").src;
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // check if item exists
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          name,
+          price,
+          image,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      updateCartCount();
+
+      // 🔥 small feedback
+      btn.innerText = "Added!";
+      setTimeout(() => (btn.innerText = "Add to Cart"), 1000);
+    });
+  });
+
+  // =========================
+  // 🛒 UPDATE CART COUNT
+  // =========================
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const countEl = document.getElementById("cart-count");
+
+    if (countEl) {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      countEl.textContent = total;
+    }
   }
 
   updateCartCount();
 
-  // ❤️ Wishlist Toggle
-  document.querySelectorAll(".wishlist").forEach(btn => {
-    btn.addEventListener("click", () => {
-      btn.classList.toggle("active");
+  // =========================
+  // 🗑 CLEAR CART (OPTIONAL BUTTON)
+  // =========================
+  const clearCartBtn = document.getElementById("clear-cart");
+
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener("click", () => {
+      localStorage.removeItem("cart");
+      updateCartCount();
+      location.reload();
     });
-  });
+  }
+
+  // =========================
+  // 🎯 SIMPLE SCROLL ANIMATION
+  // =========================
+  const animatedEls = document.querySelectorAll(".animate");
+
+  function showOnScroll() {
+    const trigger = window.innerHeight * 0.85;
+
+    animatedEls.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+
+      if (top < trigger) {
+        el.classList.add("show");
+      } else {
+        el.classList.remove("show"); // repeat animation
+      }
+    });
+  }
+
+  window.addEventListener("scroll", showOnScroll);
+  showOnScroll();
 
 });

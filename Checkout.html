@@ -12,22 +12,23 @@
 <body>
 
 <nav class="navbar">
-  <h2>Checkout</h2>
+  <h2 style="color: #ff6600;
+             font-size: 35px;">Checkout</h2>
 </nav>
 
 <section class="checkout-page">
   <div class="checkout-container">
 
     <!-- FORM -->
-    <div class="checkout-form">
-      <h3>Billing Details</h3>
+    <div class="checkout-form contact-form">
+      <h3 style="color: #ff6600;">Billing Details</h3>
 
       <input type="text" id="name" placeholder="Full Name">
       <input type="text" id="phone" placeholder="Phone Number">
       <input type="text" id="address" placeholder="Address">
       <input type="text" id="city" placeholder="City">
 
-      <h3>Payment Method</h3>
+      <h3 style="color: #ff6600;">Payment Method</h3>
 
       <select id="payment">
         <option value="cash">Cash on Delivery</option>
@@ -36,11 +37,11 @@
 
       <!-- TELEBIRR -->
       <div id="telebirr-box" style="display:none;">
-        <p>Send to: <strong>+2519XXXXXXXX</strong></p>
+        <p>Send to: <strong>+251934027373</strong></p>
         <input type="text" id="tx-id" placeholder="Transaction ID">
       </div>
 
-      <button id="place-order">Place Order</button>
+      <button id="place-order" class="btn">Place Order</button>
     </div>
 
     <!-- SUMMARY -->
