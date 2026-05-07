@@ -53,12 +53,14 @@
         </div>
       </div>
 
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <input type="text" placeholder="Subject" required>
-        <textarea rows="6" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
+      <form class="contact-form" id="contact-form">
+        <input type="text" placeholder="Your Name" id="name" required>
+        <input type="email" placeholder="Your Email" id="email" required>
+        <input type="text" placeholder="Subject" id="subject" required>
+        <textarea rows="6" placeholder="Your Message" id="message" required></textarea>
+        <button type="submit" class="btn" id="send-btn">Send Message</button>
+
+        <p id="form-message"></p>
       </form>
     </div>
   </section>

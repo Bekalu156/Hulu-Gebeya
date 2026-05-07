@@ -183,3 +183,70 @@ document.addEventListener("DOMContentLoaded", () => {
   showOnScroll();
 
 });
+
+
+// =========================
+// 📩 SEND CONTACT TO TELEGRAM
+// =========================
+
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const formMessage = document.getElementById("form-message");
+    const sendBtn = document.getElementById("send-btn");
+
+    sendBtn.innerText = "Sending...";
+    sendBtn.disabled = true;
+
+    const telegramMessage = `
+🛒 New Contact Message
+
+👤 Name: ${name}
+📧 Email: ${email}
+💬 Message: ${message}
+`;
+
+    const BOT_TOKEN = "8726599732:AAEiAwOKYVp-PsVl13pBuacsMKhyk2hHcwY";
+    const CHAT_ID = "5674801497";
+
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+    try {
+
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: telegramMessage
+        })
+      });
+
+      formMessage.style.color = "green";
+      formMessage.innerText = "✅ Message sent successfully!";
+
+      contactForm.reset();
+
+    } catch (error) {
+
+      formMessage.style.color = "red";
+      formMessage.innerText = "❌ Failed to send message";
+
+    }
+
+    sendBtn.innerText = "Send Message";
+    sendBtn.disabled = false;
+
+  });
+
+}
